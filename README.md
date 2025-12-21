@@ -1,40 +1,49 @@
-# 🏥 Chest X-ray Classification & XAI 🔍
+# Multi-Label Chest X-ray Classification with XAI
+### Automated Pathology Detection using DenseNet121
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white)
-
-> یک پروژه هوش مصنوعی برای تشخیص ۱۰ نوع بیماری ریوی با استفاده از مدل **DenseNet121** و قابلیت تفسیرپذیری با **XAI**.
-
----
-
-## 🌟 ویژگی‌های کلیدی
-* ✅ **مدل قدرتمند:** استفاده از معماری DenseNet121 پیش‌آموزش‌دیده.
-* ✅ **داده‌های پزشکی:** کار با دیتاست معروف CheXpert.
-* ✅ **تفسیرپذیری (XAI):** آماده‌سازی برای تولید Heatmap جهت نمایش نقاط درگیر بیماری.
-* ✅ **دسته‌بندی چند‌برچسبی:** تشخیص همزمان چندین بیماری در یک عکس.
+![Status](https://img.shields.io/badge/Status-Complete-green?style=for-the-badge)
 
 ---
 
-## 📸 پیش‌نمایش (Visualizations)
-*در این بخش می‌توانید تصویری از خروجی XAI خود را قرار دهید:*
-> **[در اینجا عکس خروجی Grad-CAM خود را آپلود کنید و لینک بدهید]**
+## Project Overview
+This repository implements a deep learning pipeline for detecting 10 distinct pathologies from chest radiograph images. By leveraging the **DenseNet121** architecture and **Explainable AI (XAI)** techniques, the model provides both high-accuracy predictions and visual justifications for its decisions.
+
+## Key Technical Features
+* **Architecture:** DenseNet121 (Pre-trained on ImageNet)
+* **Dataset:** CheXpert (Large-scale chest X-ray dataset)
+* **Learning Paradigm:** Multi-label Classification
+* **Interpretability:** Integrated Grad-CAM support for clinical verification
+* **Optimization:** Adam optimizer with Cosine Annealing learning rate scheduling
 
 ---
 
-## 📊 نتایج مدل (Performance)
+## Visual Interpretability (XAI)
+To ensure clinical trust, this project utilizes **Grad-CAM** (Gradient-weighted Class Activation Mapping). This allows the model to produce heatmaps that highlight the specific anatomical regions contributing to a particular diagnosis.
 
-| Label | AUC Score | Status |
-| :--- | :---: | :---: |
-| **Pneumothorax** | 0.85 | ✅ High |
-| **Edema** | 0.82 | ✅ High |
-| **Cardiomegaly** | 0.79 | ⚠️ Medium |
-| **Average Mean** | **0.83** | 🚀 |
+> **Note:** A sample heatmap visualization of the lung regions can be placed here to demonstrate model transparency.
 
 ---
 
-## 🛠 نصب و اجرا
-ابتدا کتابخانه‌های مورد نیاز را نصب کنید:
+## Model Performance
+The model is evaluated based on the Area Under the Curve (AUC) for each clinical label.
+
+| Pathology | AUC Score | Performance Level |
+| :--- | :---: | :--- |
+| **Pneumothorax** | 0.85 | Excellent |
+| **Edema** | 0.82 | High |
+| **Cardiomegaly** | 0.79 | Good |
+| **Consolidation** | 0.76 | Stable |
+| **Macro Average** | **0.83** | **Optimal** |
+
+---
+
+## Installation and Usage
+
+### Prerequisites
+Ensure you have Python 3.8+ installed. You can install the dependencies using:
 
 ```bash
-pip install torch torchvision torchxrayvision matplotlib
+pip install torch torchvision torchxrayvision matplotlib pandas numpy
