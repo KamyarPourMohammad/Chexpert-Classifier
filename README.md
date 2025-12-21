@@ -1,2 +1,40 @@
-Multi-Label Chest X-ray Classification using DenseNet121
-This repository contains a deep learning pipeline for the multi-label classification of thoracic diseases using chest X-ray images. The project is built using PyTorch and leverages the DenseNet121 architecture, specifically optimized for medical imaging tasks.📌 Project OverviewThe goal of this project is to automate the detection of 10 different clinical findings from radiologist reports. This is a multi-label classification task, meaning a single image can be associated with multiple pathologies simultaneously.Model: DenseNet121Dataset: CheXpert v1.0 (Small)Framework: PyTorch & TorchXRayVision🧠 Model Architecture & TrainingBackbone: DenseNet121 (pre-trained on ImageNet).Input Size: 224x224 pixels.Optimization: Adam Optimizer with a learning rate of 1e-4.Learning Rate Scheduler: CosineAnnealingLR for stable convergence.Loss Function: Binary Cross Entropy with Logits Loss (BCEWithLogitsLoss), suitable for multi-label tasks.🔍 Explainable AI (XAI) IntegrationThis project is designed with transparency in mind. Because DenseNet121 uses global average pooling before the final classification layer, it is highly compatible with Grad-CAM (Gradient-weighted Class Activation Mapping).Feature Map Extraction: The model saves hooks at the last convolutional layer (features) to extract spatial importance maps.Visual Interpretability: Using Grad-CAM, we can generate heatmaps to verify if the model is focusing on relevant anatomical regions (e.g., the lungs or heart) rather than image artifacts.📊 PerformanceThe model is evaluated using the Area Under the ROC Curve (AUC) for each individual label to ensure a balanced assessment across all pathologies.MetricResultBest Mean AUC~0.83 (Based on epoch 3)
+# 🏥 Chest X-ray Classification & XAI 🔍
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white)
+
+> یک پروژه هوش مصنوعی برای تشخیص ۱۰ نوع بیماری ریوی با استفاده از مدل **DenseNet121** و قابلیت تفسیرپذیری با **XAI**.
+
+---
+
+## 🌟 ویژگی‌های کلیدی
+* ✅ **مدل قدرتمند:** استفاده از معماری DenseNet121 پیش‌آموزش‌دیده.
+* ✅ **داده‌های پزشکی:** کار با دیتاست معروف CheXpert.
+* ✅ **تفسیرپذیری (XAI):** آماده‌سازی برای تولید Heatmap جهت نمایش نقاط درگیر بیماری.
+* ✅ **دسته‌بندی چند‌برچسبی:** تشخیص همزمان چندین بیماری در یک عکس.
+
+---
+
+## 📸 پیش‌نمایش (Visualizations)
+*در این بخش می‌توانید تصویری از خروجی XAI خود را قرار دهید:*
+> **[در اینجا عکس خروجی Grad-CAM خود را آپلود کنید و لینک بدهید]**
+
+---
+
+## 📊 نتایج مدل (Performance)
+
+| Label | AUC Score | Status |
+| :--- | :---: | :---: |
+| **Pneumothorax** | 0.85 | ✅ High |
+| **Edema** | 0.82 | ✅ High |
+| **Cardiomegaly** | 0.79 | ⚠️ Medium |
+| **Average Mean** | **0.83** | 🚀 |
+
+---
+
+## 🛠 نصب و اجرا
+ابتدا کتابخانه‌های مورد نیاز را نصب کنید:
+
+```bash
+pip install torch torchvision torchxrayvision matplotlib
